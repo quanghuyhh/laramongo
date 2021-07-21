@@ -13,12 +13,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth:web'])->name('dashboard');
 
-require __DIR__.'/auth.php';
+// Route::get('/spa', function () {
+//     return view('spa.application');
+// });
+
+// require __DIR__.'/auth.php';
+
+Route::view('/{any}', 'spa.application')
+    ->where('any', '.*');
