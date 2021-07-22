@@ -8,7 +8,7 @@
 
         <div class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg">
             <!-- Session Status -->
-            <AuthSessionStatus :status="status"/>
+            <AuthSessionStatus :status="status" :class="'text-red-400 mb-4'"/>
 
             <!-- Validation Errors -->
             <AuthValidationErrors class="mb-4" :errors="errors" />
@@ -68,13 +68,20 @@ export default {
     },
     methods: {
         async submit() {
+            this.status = null;
+            this.errors = {};
             await this.axios.post('/auth/login', {email: this.email, password: this.password})
             .then(response => {
                 this.$router.push('/');
                 this.$store.commit('auth/SET_USER', response.data)
             })
             .catch(({response}) => {
-                this.errors = response.hasOwnProperty('data') ? response.data : {};
+                
+                if (response.data.hasOwnProperty('error')) {
+                    this.status = response.data.error;
+                } else if (response.hasOwnProperty('data')) {
+                    this.errors = response.hasOwnProperty('data') ? response.data : {};
+                }
             })
         }
     }

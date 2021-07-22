@@ -1,5 +1,5 @@
 <template>
-    <div class="font-medium text-sm text-green-600" v-if="status">
+    <div class="font-medium text-sm" v-if="status">
         {{ status}}
     </div>
 </template>

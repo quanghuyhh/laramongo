@@ -1,30 +1,41 @@
 <template>
-    <div class="demo">
-        <Login />
-        <ResetPassword />
-        <ConfirmPassword />
-        <ForgotPassword />
-        <VerifyEmail />
+    <div class="min-h-screen bg-gray-100">
+        <Navigation />
+
+        <!-- Page Heading -->
+        <header class="bg-white shadow">
+            <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+                <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+                    Dashboard
+                </h2>
+            </div>
+        </header>
+
+        <!-- Page Content -->
+        <main>
+            <div class="py-12">
+                <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+                    <div
+                        class="bg-white overflow-hidden shadow-sm sm:rounded-lg"
+                    >
+                        <div class="p-6 bg-white border-b border-gray-200">
+                            You're logged in!
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
     </div>
 </template>
 
 <script>
-import Login from "./Login.vue";
-import ResetPassword from "./ResetPassword.vue";
-import ConfirmPassword from "./ConfirmPassword.vue";
-import ForgotPassword from "./ForgotPassword.vue";
-import VerifyEmail from "./VerifyEmail.vue";
+import Navigation from "../components/common/Navigation.vue";
 export default {
     components: {
-        Login,
-        ResetPassword,
-        ConfirmPassword,
-        ForgotPassword,
-        VerifyEmail
-    }
-}
+        Navigation,
+    },
+};
 </script>
 
 <style>
-
 </style>
